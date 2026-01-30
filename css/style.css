@@ -186,7 +186,7 @@ color: #fff;
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
-bottom: 7%;
+bottom: 25%;
   left: 50%;
    /* transform: translate(-50%, -50%);centraliza */
   background: linear-gradient(135deg, #ff8c00, #ff6b00);
