@@ -24,14 +24,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 
 .game-container {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     max-width: 56.25vh; /* 9:16 aspect ratio */
     max-height: 177.78vw; /* 16:9 aspect ratio inverted */
     background: #87CEEB;
@@ -232,7 +232,7 @@ display:none;
 @media (max-width: 768px) {
   .game-container {
     width: 100vw;       /* ocupa toda a largura */
-    height: 100vh;      /* respeita notch/teclado */
+    height: 100dvh;      /* respeita notch/teclado */
     aspect-ratio: auto; /* deixa o JS cuidar do bitmap; visual é full */
   }
 
