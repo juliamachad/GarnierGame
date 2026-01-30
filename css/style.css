@@ -276,9 +276,9 @@ display:none;
     }
 
   .score-container { 
-    gap: 20px; 
+    gap: 80px; 
     min-width: 220px; 
-    width: 100%;
+    width: 120%;
     padding: 8px 14px; 
     bottom:18%;
     position: absolute; 
