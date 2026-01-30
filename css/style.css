@@ -248,7 +248,7 @@ display:none;
     aspect-ratio: auto; /* deixa o JS cuidar do bitmap; visual é full */
   }
   #texto_final{
-    bottom: 40%;
+    bottom: 50%;
   }
 
 
@@ -276,7 +276,7 @@ display:none;
     }
 
   .score-container { 
-    gap: 80px; 
+    gap: 70px; 
     min-width: 220px; 
     width: 120%;
     padding: 8px 14px; 
