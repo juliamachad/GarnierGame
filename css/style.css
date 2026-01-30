@@ -54,10 +54,10 @@ body {
 #bolhaPrincipal{
   width: 80%;
   left: 10%;
-  margin-top: 30vh;
+  bottom: 30%;
   margin-bottom: auto;
   z-index: 2;
-  position: relative;
+  position: absolute;
   animation: zoomSuave 3s ease-in-out infinite;
 }
 
@@ -140,7 +140,7 @@ body {
 }
 
 /* Aplica o blink nos dois botões */
-#startButton.blink{
+#Button.blink{
   animation: blink 1s infinite;
 }
 
@@ -182,7 +182,7 @@ color: #fff;
   text-align: center;
 }
 
-/* Botão de Start centralizado na tela */
+/* Botão de  centralizado na tela */
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
@@ -241,7 +241,7 @@ display:none;
     padding: 10px 18px;
     font-size: 15px;
      position: absolute;
- bottom: 7%;
+ bottom: 10%;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
   
@@ -256,11 +256,15 @@ display:none;
   transition: all 0.3s ease;
   z-index: 10; /* garante que fique por cima */
   }
+  #bolhaPrincipal{
+      bottom: 30%;
+    }
 
   .score-container { 
     gap: 20px; 
     min-width: 220px; 
     padding: 8px 14px; 
+     bottom:7%;
   }
 }
 
@@ -407,6 +411,7 @@ white-space: nowrap;
     .score-label{
       font-size: 16px;
     }
+    
 }
 
 /* Animações para as bolhas */
