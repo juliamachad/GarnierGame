@@ -278,8 +278,9 @@ display:none;
   .score-container { 
     gap: 20px; 
     min-width: 220px; 
+    width: 100%;
     padding: 8px 14px; 
-    bottom:20%;
+    bottom:17%;
   }
 }
 
