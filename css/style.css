@@ -236,6 +236,10 @@ display:none;
     height: 100dvh;      /* respeita notch/teclado */
     aspect-ratio: auto; /* deixa o JS cuidar do bitmap; visual é full */
   }
+  #texto_final{
+    bottom: 40%;
+  }
+
 
   #startButton {
     padding: 10px 18px;
@@ -264,7 +268,7 @@ display:none;
     gap: 20px; 
     min-width: 220px; 
     padding: 8px 14px; 
-     bottom:15%;
+    bottom:50%;
   }
 }
 
