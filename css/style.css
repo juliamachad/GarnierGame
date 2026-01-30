@@ -183,7 +183,7 @@ color: #fff;
 }
 
 /* Botão de  centralizado na tela */
-#Button {
+#startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
 bottom: 7%;
