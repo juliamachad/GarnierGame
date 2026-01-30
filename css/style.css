@@ -204,18 +204,16 @@ bottom: 7%;
 }
 
 /* Placa de pontuação */
-.score-container {
-  position: absolute;   /* use absoluto dentro do container, não fixed */
- 
-  background: none;
-  color: black;
-  border-radius: 0;
-  font-weight: bold;
-  z-index: 5;
- display: none;
-  justify-content: center;
-  user-select: none;
-  pointer-events: none; /* não bloqueia toques no canvas */
+/* ---------- SCORE: versão maior ---------- */
+.score-container{
+position: absolute !important;
+bottom: 4%;
+width: 85.5%;
+margin: 0 12%;
+padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
+gap: clamp(22px, 18vw, 100px);
+border-radius: 0;
+box-sizing: border-box;
 }
 
 .score-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -453,17 +451,7 @@ white-space: nowrap;
 }
 
 
-/* ---------- SCORE: versão maior ---------- */
-.score-container{
-position: absolute !important;
-bottom: 4%;
-width: 85.5%;
-margin: 0 12%;
-padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
-gap: clamp(22px, 18vw, 100px);
-border-radius: 0;
-box-sizing: border-box;
-}
+
 
 
 
