@@ -51,7 +51,7 @@ body {
 
 }
 
-#bolhaPrincipal{
+#ncipal{
   width: 80%;
   left: 10%;
   bottom: 30%;
@@ -241,7 +241,7 @@ display:none;
     padding: 10px 18px;
     font-size: 15px;
      position: absolute;
- bottom: 10%;
+ bottom: 15%;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
   
@@ -257,7 +257,7 @@ display:none;
   z-index: 10; /* garante que fique por cima */
   }
   #bolhaPrincipal{
-      bottom: 30%;
+      bottom: 40%;
     }
 
   .score-container { 
