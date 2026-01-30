@@ -24,16 +24,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100dvh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 
 .game-container {
     position: relative;
     width: 100vw;
-    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
     max-width: 56.25vh; /* 9:16 aspect ratio */
-    max-height: 177.78vw; /* 16:9 aspect ratio inverted */
+    /*max-height: 177.78vw;  16:9 aspect ratio inverted */
     background: #87CEEB;
     overflow: hidden;
     border-radius: 0;
@@ -87,15 +88,15 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.game-container {
+/*.game-container {
   position: relative;
-  width: min(100vw, 56.25vh); /* 9:16 cabe em qualquer tela */
+  width: min(100vw, 56.25vh);  9:16 cabe em qualquer tela 
   aspect-ratio: 9 / 16;
   background: #87CEEB;
   overflow: hidden;
   border-radius: 0;
   touch-action: none;
-}
+}*/
 
 /* Camadas ---------------------------------------------------- */
 #backgroundVideo,
@@ -185,9 +186,9 @@ color: #fff;
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
-  top: 86%;
+bottom: 7%;
   left: 50%;
-  transform: translate(-50%, -50%); /* centraliza */
+   /* transform: translate(-50%, -50%);centraliza */
   background: linear-gradient(135deg, #ff8c00, #ff6b00);
   color: black;
    border: none;
@@ -446,7 +447,7 @@ white-space: nowrap;
 /* ---------- SCORE: versão maior ---------- */
 .score-container{
 position: absolute !important;
-top: 86.2%;
+bottom: 4%;
 width: 85.5%;
 margin: 0 12%;
 padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
