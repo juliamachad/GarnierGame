@@ -54,7 +54,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: 95svh;
   justify-content: space-between;
     height: -webkit-fill-available;
 }
