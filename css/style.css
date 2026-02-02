@@ -24,17 +24,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(var(--vh, 1vh) * 100);
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
 }
 
 
 .game-container {
     position: relative;
     width: 100vw;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100vh;
     max-width: 56.25vh; /* 9:16 aspect ratio */
-    /*max-height: 177.78vw;  16:9 aspect ratio inverted */
+    max-height: 177.78vw; /* 16:9 aspect ratio inverted */
     background: #87CEEB;
     overflow: hidden;
     border-radius: 0;
@@ -44,7 +43,7 @@ body {
 #backgroundImage {
     position: absolute;
     width: 100%;
-    height: 100dvh;
+    height: 100%;
     z-index: 1;
     left: 0;
     top:0;
@@ -54,10 +53,10 @@ body {
 #bolhaPrincipal{
   width: 80%;
   left: 10%;
-  bottom: 30%;
+  margin-top: 30vh;
   margin-bottom: auto;
   z-index: 2;
-  position: absolute;
+  position: relative;
   animation: zoomSuave 3s ease-in-out infinite;
 }
 
@@ -88,15 +87,15 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/*.game-container {
+.game-container {
   position: relative;
-  width: min(100vw, 56.25vh);  9:16 cabe em qualquer tela 
+  width: min(100vw, 56.25vh); /* 9:16 cabe em qualquer tela */
   aspect-ratio: 9 / 16;
   background: #87CEEB;
   overflow: hidden;
   border-radius: 0;
   touch-action: none;
-}*/
+}
 
 /* Camadas ---------------------------------------------------- */
 #backgroundVideo,
@@ -140,7 +139,7 @@ body {
 }
 
 /* Aplica o blink nos dois botões */
-#Button.blink{
+#startButton.blink{
   animation: blink 1s infinite;
 }
 
@@ -182,13 +181,13 @@ color: #fff;
   text-align: center;
 }
 
-/* Botão de  centralizado na tela */
+/* Botão de Start centralizado na tela */
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
-bottom: 7%;
+  top: 86%;
   left: 50%;
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* centraliza */
   background: linear-gradient(135deg, #ff8c00, #ff6b00);
   color: black;
    border: none;
@@ -205,29 +204,18 @@ bottom: 7%;
 
 /* Placa de pontuação */
 .score-container {
-  position: absolute; /* absoluto dentro do container */
-  bottom: 4%;
-
-  width: 85.5%;
-  margin: 0 12%;
-  padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
-  gap: clamp(22px, 18vw, 100px);
-
+  position: absolute;   /* use absoluto dentro do container, não fixed */
+ 
   background: none;
   color: black;
   border-radius: 0;
-  box-sizing: border-box;
-
   font-weight: bold;
   z-index: 5;
-
-  display: none;
+ display: none;
   justify-content: center;
-
   user-select: none;
   pointer-events: none; /* não bloqueia toques no canvas */
 }
-
 
 .score-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .score-label { font-size: 12px; font-weight: normal; margin-bottom: 4px; opacity: .9; }
@@ -244,19 +232,15 @@ display:none;
 @media (max-width: 768px) {
   .game-container {
     width: 100vw;       /* ocupa toda a largura */
-    height: 100dvh;      /* respeita notch/teclado */
+    height: 100vh;      /* respeita notch/teclado */
     aspect-ratio: auto; /* deixa o JS cuidar do bitmap; visual é full */
   }
-  #texto_final{
-    bottom: 50%;
-  }
-
 
   #startButton {
     padding: 10px 18px;
     font-size: 15px;
      position: absolute;
- bottom: 17%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
   
@@ -271,20 +255,11 @@ display:none;
   transition: all 0.3s ease;
   z-index: 10; /* garante que fique por cima */
   }
-  #bolhaPrincipal{
-      bottom: 40%;
-    }
 
   .score-container { 
-    gap: 70px; 
+    gap: 20px; 
     min-width: 220px; 
-    width: 120%;
     padding: 8px 14px; 
-    bottom:18%;
-    position: absolute; 
-    margin: 0 5%;
-  left: 50%;
-  transform: translateX(-50%);
   }
 }
 
@@ -431,7 +406,6 @@ white-space: nowrap;
     .score-label{
       font-size: 16px;
     }
-    
 }
 
 /* Animações para as bolhas */
@@ -469,7 +443,17 @@ white-space: nowrap;
 }
 
 
-
+/* ---------- SCORE: versão maior ---------- */
+.score-container{
+position: absolute !important;
+top: 86.2%;
+width: 85.5%;
+margin: 0 12%;
+padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
+gap: clamp(22px, 18vw, 100px);
+border-radius: 0;
+box-sizing: border-box;
+}
 
 
 

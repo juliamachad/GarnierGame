@@ -114,55 +114,37 @@ function setScoreContainerVisibility(visible) {
 // RESIZE 9:16 (layout responsivo, bitmap fixo)
 // ===============================
 function resizeCanvas() {
-  // 1. Pega a altura real da área visível (Visual Viewport)
-  // Se não suportado, cai para o innerHeight padrão
-  const vv = window.visualViewport;
-  const viewportWidth = vv ? vv.width : window.innerWidth;
-  const viewportHeight = vv ? vv.height : window.innerHeight;
-
-  // 2. Define uma variável CSS para ser usada no style.css
-  // Isso resolve o problema do 100vh no Safari
-  let vh = viewportHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-  // 3. Lógica de proporção 9:16
   const aspect = 9 / 16;
-  let canvasDisplayWidth = viewportWidth;
-  let canvasDisplayHeight = viewportHeight;
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  if (width / height > aspect) width = height * aspect;
+  else height = width / aspect;
 
-  if (canvasDisplayWidth / canvasDisplayHeight > aspect) {
-    canvasDisplayWidth = canvasDisplayHeight * aspect;
-  } else {
-    canvasDisplayHeight = canvasDisplayWidth / aspect;
-  }
-
-  // 4. Ajusta o bitmap interno (resolução do jogo)
+  // bitmap interno fixo do jogo
   gameCanvas.width = GAME_WIDTH;
   gameCanvas.height = GAME_HEIGHT;
+  gameCanvas.style.width  = `${width}px`;
+  gameCanvas.style.height = `${height}px`;
 
-  // 5. Ajusta o tamanho visual (CSS) do canvas
-  gameCanvas.style.width = `${canvasDisplayWidth}px`;
-  gameCanvas.style.height = `${canvasDisplayHeight}px`;
-
-  // Ajusta a máscara se existir
+  // Se existir um canvas de máscara no DOM, mantém escalado junto
   const mask = document.getElementById('userMaskCanvas');
   if (mask) {
     mask.width = GAME_WIDTH;
     mask.height = GAME_HEIGHT;
-    mask.style.width = `${canvasDisplayWidth}px`;
-    mask.style.height = `${canvasDisplayHeight}px`;
+    mask.style.width  = `${width}px`;
+    mask.style.height = `${height}px`;
+  }
+
+  // Se quiser que qualquer outro elemento acompanhe o tamanho (ex: camadas)
+  for (const el of [gameCanvas]) {
+    if (!el) continue;
+    el.style.width = `${width}px`;
+    el.style.height = `${height}px`;
   }
 }
-
-// Escuta mudanças na viewport visual (essencial para Safari/Chrome mobile)
-if (window.visualViewport) {
-  window.visualViewport.addEventListener('resize', resizeCanvas);
-  window.visualViewport.addEventListener('scroll', resizeCanvas);
-}
 window.addEventListener('resize', resizeCanvas);
-window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 200));
+window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 120));
 resizeCanvas();
-
 
 // ===============================
 // Helpers de limpeza/efeitos
