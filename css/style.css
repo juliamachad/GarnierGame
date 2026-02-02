@@ -261,10 +261,9 @@ display:none;
     padding: 10px 18px;
     font-size: 15px;
      position: absolute;
- bottom: calc(10dvh + var(--safe-bottom));
+ bottom: calc(15dvh + var(--safe-bottom));
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
-  
     background: linear-gradient(135deg, #ff8c00, #ff6b00);  color: white;
    border: none;
   padding: 2% 5%;
@@ -277,7 +276,7 @@ display:none;
   z-index: 10; /* garante que fique por cima */
   }
   #bolhaPrincipal{
-      bottom: calc(30dvh + var(--safe-bottom));
+      bottom: calc(40dvh + var(--safe-bottom));
     }
 
   .score-container { 
