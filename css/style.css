@@ -1,3 +1,8 @@
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -53,8 +58,7 @@ body {
 #bolhaPrincipal{
   width: 80%;
   left: 10%;
-  margin-top: 30vh;
-  margin-bottom: auto;
+  bottom: calc(40% + var(--safe-bottom));
   z-index: 2;
   position: relative;
   animation: zoomSuave 3s ease-in-out infinite;
@@ -185,7 +189,7 @@ color: #fff;
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
-  top: 86%;
+  bottom: calc(17% + var(--safe-bottom));
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
   background: linear-gradient(135deg, #ff8c00, #ff6b00);
@@ -205,7 +209,7 @@ color: #fff;
 /* Placa de pontuação */
 .score-container {
   position: absolute;   /* use absoluto dentro do container, não fixed */
- 
+ bottom: calc(18% + var(--safe-bottom));
   background: none;
   color: black;
   border-radius: 0;
