@@ -3,6 +3,23 @@
    (IMAGEM de fundo opcional: <img id="backgroundImage">) + APNG no clique
    ========================================================= */
 
+   function syncBodyToImage() {
+    const img = document.getElementById('backgroundImage');
+    if (img) {
+        // Pega a altura real renderizada da imagem
+        const imgHeight = img.offsetHeight;
+        // Aplica ao body e ao container
+        document.body.style.height = imgHeight + 'px';
+        document.documentElement.style.height = imgHeight + 'px';
+    }
+}
+
+// Executa quando a imagem carregar
+document.getElementById('backgroundImage').addEventListener('load', syncBodyToImage);
+
+// Executa no redimensionamento (mudança de orientação)
+window.addEventListener('resize', syncBodyToImage);
+
 // ===============================
 // ELEMENTOS DO DOM
 // ===============================
