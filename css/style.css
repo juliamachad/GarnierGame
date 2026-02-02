@@ -56,7 +56,7 @@ body {
   bottom: 40svh;
   margin-bottom: auto;
   z-index: 2;
-  position: relative;
+  position: absolute;
   animation: zoomSuave 3s ease-in-out infinite;
 }
 
