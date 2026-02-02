@@ -25,11 +25,11 @@
 body {
   font-family: 'Bodoni', Arial, sans-serif;
   background: #000;
-  overflow: hidden;
+  overflow:hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100svh;
 }
 
 
