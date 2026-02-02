@@ -2,14 +2,22 @@
    JOGO — 2 loops + produto com delay
    (IMAGEM de fundo opcional: <img id="backgroundImage">) + APNG no clique
    ========================================================= */
+function syncBodyToImage() {
+    const img = document.getElementById('backgroundImage');
+    if (img) {
+        // Pega a altura real renderizada da imagem
+        const imgHeight = img.offsetHeight;
+        // Aplica ao body e ao container
+        document.body.style.height = imgHeight + 'px';
+        document.documentElement.style.height = imgHeight + 'px';
+    }
+}
 
-   // Impede o movimento de "scroll" no toque
-document.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-}, { passive: false });
+// Executa quando a imagem carregar
+document.getElementById('backgroundImage').addEventListener('load', syncBodyToImage);
 
-// Garante que a tela volte para o topo se houver qualquer deslocamento
-window.scrollTo(0, 0);
+// Executa no redimensionamento (mudança de orientação)
+window.addEventListener('resize', syncBodyToImage);
 
 // ===============================
 // ELEMENTOS DO DOM
