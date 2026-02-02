@@ -127,7 +127,7 @@ body {
 
 #texto_final{
     position: absolute;
-    bottom: 40svh;
+    bottom: 45svh;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 72%;
@@ -217,8 +217,6 @@ display:none;
   bottom: 15svh;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
-  
-    background: linear-gradient(135deg, #ff8c00, #ff6b00);  color: white;
    border: none;
   padding: 2% 5%;
   border-radius: 0;
@@ -421,7 +419,7 @@ white-space: nowrap;
 .score-container{
 position: absolute !important;
 bottom: 20svh;
-width: 85.5%;
+width: 85.5svw;
 margin: 0 12%;
 padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
 gap: clamp(22px, 18vw, 100px);
