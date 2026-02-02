@@ -17,6 +17,10 @@
   font-style: normal;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Bodoni', Arial, sans-serif;
   background: #000;
@@ -26,49 +30,54 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-.border{
+
+.game-container {
+  min-height: 100vh;
+  width: min(100vw, 56.25vh);
+  aspect-ratio: 9 / 16;
+  background-color: #edcbcc;
+  background-image: url("../images/textura.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: #000 solid 2px;
-  width: 90%;
+  padding: 40px 25px;
+}
+
+.border-container {
+  width: 100%;
+  max-width: 1000px;
+  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   height: 95svh;
-  z-index: 1;
+  justify-content: space-between;
 }
 
-
-.game-container {
-    position: relative;
-    width: min(100vw, 56.25vh);
-    aspect-ratio: 9 / 16;
-    overflow: hidden;
-    border-radius: 0;
-    touch-action: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* linhas */
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-#backgroundImage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    left: 0;
-    top:0;
-
+/* logo */
+.logo {
+  max-width: 100px;
+  width: 100%;
+  margin-top: 20px;
 }
 
-#bolhaPrincipal{
-  width: 80%;
-  margin-top: 25vh;
-  margin-bottom: auto;
-  z-index: 2;
-  position: relative;
+/* bolha */
+#bolhaPrincipal {
+  width: 85%;
   animation: zoomSuave 3s ease-in-out infinite;
 }
-
 @keyframes zoomSuave {
   0% {
     transform: scale(1);
@@ -80,63 +89,86 @@ body {
     transform: scale(1);
   }
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html, body {
-  height: 100%;
+/* terceira linha */
+.score-container {
+  max-width: 900px;
+  align-items: stretch;
+  justify-content: center;
+  border-top: 2px solid black;
+  display: none;
 }
 
-body {
-  font-family: 'Bodoni', Arial, sans-serif;
-  background: #000;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
+/* colunas */
+.column {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.game-container {
-  position: relative;
-  width: min(100vw, 56.25vh); /* 9:16 cabe em qualquer tela */
-  aspect-ratio: 9 / 16;
-  background: #87CEEB;
-  overflow: hidden;
+/* divisor */
+.divider {
+  width: 2px;
+  background-color:black;
+}
+
+/* textos */
+.score-label{ 
+  padding-top: 15px;
+  font-size: 21px;
+  letter-spacing: 1px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.score-value{ 
+  font-family: 'Gotham', Arial, sans-serif;
+  font-size: clamp(23px, 4vw, 44px);
+  font-weight: 100;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+#startButton {
+  background-image: url(./../images/startButtonBg.png);
+  background-size: cover;
+  color: black;
+  padding: 19px 125px;
   border-radius: 0;
-  touch-action: none;
+  font-size: 31px;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  margin-bottom: 50px;
+  border: none;
+  font-family: 'Bodoni', Arial, sans-serif;
+  z-index: 10;
+  width: 85%;
 }
 
-/* Camadas ---------------------------------------------------- */
-#backgroundVideo,
-#userCamera,
-#userMaskCanvas,
+#texto_final{
+    width: 80%;
+    z-index: 10;
+    margin-top: 40px;
+    text-align: center;
+    color: #fff;
+    display: none;
+}
+
 #gameCanvas {
-  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-/* Vídeo de fundo (nuvens) */
-#backgroundVideo {
-  z-index: 1;
-  object-fit: cover;
-  opacity: 0.8;
-  will-change: transform; /* ajuda em escala/resizes */
-}
-
-#userCamera {
+  z-index: 3;
+  cursor: pointer;
+  image-rendering: auto;
+  touch-action: none;
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;    /* acima do fundo, abaixo das bolhas */
-  opacity: 1;    /* visível */
-  transform: scaleX(-1); /* espelho (tire se não quiser) */
-  display: block;
 }
-
 
 @keyframes blink {
   0%, 100% {
@@ -152,280 +184,6 @@ body {
   animation: blink 1s infinite;
 }
 
-
-#texto_final{
-    position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 72%;
-z-index: 999;
-text-align: center;
-color: #fff;
-    display: none;
-}
-
-
-/* Máscara da pessoa (BodyPix) */
-#userMaskCanvas {
-  z-index: 2;
-  pointer-events: none;
-  transform: scaleX(-1); /* alinha com a câmera espelhada */
-}
-
-/* Canvas do jogo (bolhas) */
-#gameCanvas {
-  z-index: 3;
-  cursor: pointer;
-  image-rendering: auto;
-}
-
-/* UI --------------------------------------------------------- */
-.game-controls {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-  text-align: center;
-}
-
-/* Botão de Start centralizado na tela */
-#startButton {
-   font-family: 'Bodoni', Arial, sans-serif;
-  position: absolute;
-  top: 86%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* centraliza */
-  background: linear-gradient(135deg, #ff8c00, #ff6b00);
-  color: black;
-   border: none;
-  padding: 2% 10%;
-  border-radius: 0;
-  font-size: 5vw;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  z-index: 10; /* garante que fique por cima */
-}
-
-/* Placa de pontuação */
-.score-container {
-  display: none;
-  position: relative;
-justify-content: auto;
-width: 100%;
-grid-template-columns: 1fr 1fr;
-align-self: end;
-border-top: 2px solid black;
-padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
-gap: clamp(22px, 18vw, 100px);
-border-radius: 0;
-box-sizing: border-box;
-}
-.score-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: black;
-  transform: translateX(-50%);
-}
-
-.score-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
-.score-label { font-size: 12px; font-weight: normal; margin-bottom: 4px; opacity: .9; }
-.score-value { font-size: 22px; font-family: 'Gotham', Arial, sans-serif; }
-
-/* Mensagens -------------------------------------------------- */
-.permission-message,
-.loading-message {
-display:none;
-}
-.permission-message.hidden { display: none; }
-
-/* Mobile ----------------------------------------------------- */
-@media (max-width: 768px) {
-  .game-container {
-    width: 100vw;       /* ocupa toda a largura */
-    height: 100vh;      /* respeita notch/teclado */
-    aspect-ratio: auto; /* deixa o JS cuidar do bitmap; visual é full */
-  }
-
-  #startButton {
-    padding: 10px 18px;
-    font-size: 15px;
-     position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* centraliza */
-  
-    background: linear-gradient(135deg, #ff8c00, #ff6b00);  color: white;
-   border: none;
-  padding: 2% 5%;
-  border-radius: 0;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  z-index: 10; /* garante que fique por cima */
-  }
-
-  .score-container { 
-    gap: 20px; 
-    min-width: 220px; 
-    padding: 8px 14px; 
-  }
-}
-
-/* Acessibilidade: reduz animações se preferido pelo usuário */
-@media (prefers-reduced-motion: reduce) {
-  #startButton { transition: none; }
-}
-
-    
-
-/* Canvas da máscara do usuário */
-#userMaskCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 2; /* Entre o vídeo de fundo e as bolhas */
-    pointer-events: none;
-    transform: scaleX(-1); /* Espelhar horizontalmente */
-}
-
-/* Canvas para as bolhas */
-#gameCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    cursor: pointer;
-    touch-action: none;
-}
-
-/* Controles do jogo */
-.game-controls {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    text-align: center;
-}
-
-#startButton {
-    background-image: url(./../images/startButtonBg.png);
-    background-size: cover;
-    color: black;
-    padding: 19px 125px;
-    border-radius: 0;
-    font-size: 31px;
-    text-transform: uppercase;
-    font-weight: normal;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    margin-bottom: 10px;
-}
-
-
-.score-item {
-    text-align: center;
-    display: flex;
-    
-    align-items: center;
-}
-
-.score-label {
-    font-size: 21px;
-letter-spacing: 1px;
-font-weight: normal;
-margin-bottom: 10px;
-opacity: 0.9;
-white-space: nowrap;
-  /* impede quebra de linha */
-
-}
-
-.score-value {
-    font-size: 42px;
-    font-weight: bold;
-}
-
-/* Mensagem de permissão */
-.permission-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 30px;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 5;
-    font-size: 18px;
-}
-
-.permission-message.hidden {
-    display: none;
-}
-
-/* Mensagem de carregamento do modelo */
-.loading-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 30px;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 6;
-    font-size: 18px;
-}
-
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-    .game-container {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        max-height: none;
-    }
-    
-    #startButton {
-        padding: 20px 105px;
-        font-size: 26px;
-    }
-    
-    .score {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-    
-    .permission-message {
-        padding: 20px;
-        font-size: 16px;
-        margin: 0 20px;
-    }
-    .score-label{
-      font-size: 16px;
-    }
-}
 
 /* Animações para as bolhas */
 @keyframes bubble-float {
@@ -459,27 +217,4 @@ white-space: nowrap;
         transform: scale(0);
         opacity: 0;
     }
-}
-
-
-
-
-
-/* Valor BEM maior */
-.score-value{
-  font-size: clamp(23px, 4vw, 44px);
-  font-weight: 100;
-  line-height: 1.1;
-}
-
-.score-item{
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media (max-width: 360px){
-  .score-label{ font-size: 13px; }
-  .score-value{ font-size: 26px; }
 }

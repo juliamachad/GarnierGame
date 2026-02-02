@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Ultra Doux</title>
     <link rel="stylesheet" href="css/style.css">
-<script src="libs/tf.min.js"></script>
-<script src="libs/tf-backend-webgl.min.js"></script>
-<script src="libs/body-pix.min.js"></script>
+    <script src="libs/tf.min.js"></script>
+    <script src="libs/tf-backend-webgl.min.js"></script>
+    <script src="libs/body-pix.min.js"></script>
 </head>
+
 <body>
     <div class="game-container">
-   
-        <img id="backgroundImage" src="images/background1.jpg" alt="Fundo">
-       
 
-        <div class="border">
-             <img id="bolhaPrincipal" src="images/bolha-principal.png" alt="Bolha">
-            <!-- Canvas para as bolhas e efeitos -->
+        <div class="border-container">
+
             <canvas id="gameCanvas"></canvas>
-            <img src="images/texto_final.png" id="texto_final" style="display: none;">
-            <button id="startButton">Jouer</button>
 
-            <!-- Controles do jogo -->
-            
-            <div class="score-container">
-                <div class="score-item">
-                    <span class="score-label">SCORE</span>
-                    <span id="scoreValue" class="score-value">0</span>
+            <!-- Linha 1 -->
+            <div class="row logo-row">
+                <img src="images/logo.png" alt="Logo" class="logo">
+            </div>
+
+
+            <!-- Linha 2 -->
+            <div class="row bubble-row">
+                <img src="images/texto_final.png" id="texto_final" style="display: none;">
+                <img id="bolhaPrincipal" src="images/bolha-principal.png" alt="Bolha">
+            </div>
+
+             <!-- Linha 3 botao -->
+            <div class="row button-row">
+                <button id="startButton">Jouer</button>
+            </div>
+
+            <!-- Linha 3 Score -->
+            <div class="row score-container">
+                <div class="column">
+                    <p class="score-label">SCORE</p>
+                    <p class="score-value" id="scoreValue">0</p>
                 </div>
-                <div class="score-item">
-                    <span class="score-label">TEMPS RESTANT</span>
-                    <span id="timeValue" class="score-value">20</span>
+
+                <div class="divider"></div>
+
+                <div class="column">
+                    <p class="score-label">TEMPS RESTANT</p>
+                    <p class="score-value" id="timeValue">20</p>
                 </div>
-            </div>   
+            </div>
+
         </div>
-        
 
-    
+    </div>
+
+
     <script src="libs/script.js"></script>
 </body>
-</html>
 
+</html>
