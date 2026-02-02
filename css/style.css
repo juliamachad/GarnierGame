@@ -133,6 +133,7 @@ body {
 
 #startButton {
   background-image: url(./../images/startButtonBg.png);
+  text-align: center;
   background-size: cover;
   color: black;
   padding: 19px 125px;
