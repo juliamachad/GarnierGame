@@ -115,7 +115,7 @@ body {
 /* textos */
 .score-label{ 
   padding-top: 15px;
-  font-size: 21px;
+  font-size: 16px;
   letter-spacing: 1px;
   font-weight: normal;
   margin-bottom: 10px;
@@ -125,7 +125,7 @@ body {
 
 .score-value{ 
   font-family: 'Gotham', Arial, sans-serif;
-  font-size: clamp(23px, 4vw, 44px);
+  font-size: 31px;
   font-weight: 100;
   line-height: 1.1;
   margin-bottom: 10px;
