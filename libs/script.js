@@ -1,7 +1,3 @@
-/* =========================================================
-   JOGO — 2 loops + produto com delay
-   (IMAGEM de fundo opcional: <img id="backgroundImage">) + APNG no clique
-   ========================================================= */
 
 // ===============================
 // ELEMENTOS DO DOM
@@ -47,10 +43,9 @@ const BUBBLE_RADIUS_MIN       = 140;
 const BUBBLE_RADIUS_MAX       = 150;
 const BUBBLE_SPAWN_INTERVAL   = 500; // ms
 const MAX_BUBBLES             = 10;
-const BUBBLE_LIFETIME = 900;
-const FADE_OUT_DURATION = 300;
-const BUBBLE_APPEAR_DURATION = 400;
-
+const BUBBLE_APPEAR_DURATION  = 1000; // ms
+const BUBBLE_LIFETIME =1500; // Tempo total que a bolha fica na tela
+const FADE_OUT_DURATION = 500; 
 
 // APNG de estouro
 const POP_APNG_SRC        = 'images/gold-bubble.png'; // arquivo APNG (não GIF)
@@ -93,21 +88,14 @@ function imagesReady() {
   document.head.appendChild(style);
 })();
 
-// ===============================
-// FUNÇÃO PARA TROCAR BACKGROUND
-// ===============================
-function setBackground(backgroundNumber) {
-  if (backgroundImageEl) {
-    backgroundImageEl.src = `images/background${backgroundNumber}.jpg`;
-  }
-}
+
 
 // ===============================
 // FUNÇÃO PARA CONTROLAR VISIBILIDADE DO SCORE
 // ===============================
 function setScoreContainerVisibility(visible) {
   if (scoreContainer) {
-    scoreContainer.style.display = visible ? 'flex' : 'none';
+    scoreContainer.style.display = visible ? 'grid' : 'none';
   }
 }
 
@@ -523,7 +511,6 @@ function startGame() {
   clearPlayfieldImmediate();
 document.getElementById("bolhaPrincipal").style.display = "none";
 
-  setBackground(2);
   setScoreContainerVisibility(true);
 
   preStartTimeoutId = setTimeout(() => {

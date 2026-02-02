@@ -24,26 +24,36 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
+  min-height: 100vh;
+}
+.border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #000 solid 2px;
+  width: 90%;
+  height: 95svh;
+  z-index: 1;
 }
 
 
 .game-container {
     position: relative;
-    width: 100vw;
-    height: 100svh;
-    max-width: 56.25vh; /* 9:16 aspect ratio */
-    max-height: 177.78vw; /* 16:9 aspect ratio inverted */
-    background: #87CEEB;
+    width: min(100vw, 56.25vh);
+    aspect-ratio: 9 / 16;
     overflow: hidden;
     border-radius: 0;
+    touch-action: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 #backgroundImage {
     position: absolute;
     width: 100%;
-    height: 100svh;
+    height: 100%;
     z-index: 1;
     left: 0;
     top:0;
@@ -52,11 +62,10 @@ body {
 
 #bolhaPrincipal{
   width: 80%;
-  left: 10%;
-  bottom: 45svh;
+  margin-top: 25vh;
   margin-bottom: auto;
   z-index: 2;
-  position: absolute;
+  position: relative;
   animation: zoomSuave 3s ease-in-out infinite;
 }
 
@@ -105,9 +114,28 @@ body {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100svh;
+  height: 100%;
 }
 
+/* Vídeo de fundo (nuvens) */
+#backgroundVideo {
+  z-index: 1;
+  object-fit: cover;
+  opacity: 0.8;
+  will-change: transform; /* ajuda em escala/resizes */
+}
+
+#userCamera {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;    /* acima do fundo, abaixo das bolhas */
+  opacity: 1;    /* visível */
+  transform: scaleX(-1); /* espelho (tire se não quiser) */
+  display: block;
+}
 
 
 @keyframes blink {
@@ -127,17 +155,23 @@ body {
 
 #texto_final{
     position: absolute;
-    bottom: 45svh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 72%;
-    z-index: 999;
-    text-align: center;
-    color: #fff;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 72%;
+z-index: 999;
+text-align: center;
+color: #fff;
     display: none;
 }
 
 
+/* Máscara da pessoa (BodyPix) */
+#userMaskCanvas {
+  z-index: 2;
+  pointer-events: none;
+  transform: scaleX(-1); /* alinha com a câmera espelhada */
+}
 
 /* Canvas do jogo (bolhas) */
 #gameCanvas {
@@ -160,6 +194,7 @@ body {
 #startButton {
    font-family: 'Bodoni', Arial, sans-serif;
   position: absolute;
+  top: 86%;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
   background: linear-gradient(135deg, #ff8c00, #ff6b00);
@@ -178,17 +213,27 @@ body {
 
 /* Placa de pontuação */
 .score-container {
-  position: absolute;   /* use absoluto dentro do container, não fixed */
- 
-  background: none;
-  color: black;
-  border-radius: 0;
-  font-weight: bold;
-  z-index: 5;
- display: none;
-  justify-content: center;
-  user-select: none;
-  pointer-events: none; /* não bloqueia toques no canvas */
+  display: none;
+  position: relative;
+justify-content: auto;
+width: 100%;
+grid-template-columns: 1fr 1fr;
+align-self: end;
+border-top: 2px solid black;
+padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
+gap: clamp(22px, 18vw, 100px);
+border-radius: 0;
+box-sizing: border-box;
+}
+.score-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: black;
+  transform: translateX(-50%);
 }
 
 .score-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -214,9 +259,11 @@ display:none;
     padding: 10px 18px;
     font-size: 15px;
      position: absolute;
-  bottom: 15svh;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%); /* centraliza */
+  
+    background: linear-gradient(135deg, #ff8c00, #ff6b00);  color: white;
    border: none;
   padding: 2% 5%;
   border-radius: 0;
@@ -415,17 +462,6 @@ white-space: nowrap;
 }
 
 
-/* ---------- SCORE: versão maior ---------- */
-.score-container{
-position: absolute !important;
-bottom: 20svh;
-width: 85.5svw;
-margin: 0 12%;
-padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
-gap: clamp(22px, 18vw, 100px);
-border-radius: 0;
-box-sizing: border-box;
-}
 
 
 
