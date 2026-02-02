@@ -41,8 +41,8 @@ const GAME_HEIGHT = 1920;
 // Bolhas
 const BUBBLE_RADIUS_MIN       = 140;
 const BUBBLE_RADIUS_MAX       = 150;
-const BUBBLE_SPAWN_INTERVAL   = 400; // ms
-const MAX_BUBBLES             = 10;
+const BUBBLE_SPAWN_INTERVAL   = 300; // ms
+const MAX_BUBBLES             = 20;
 const BUBBLE_LIFETIME = 900;
 const FADE_OUT_DURATION = 300;
 const BUBBLE_APPEAR_DURATION = 600;
