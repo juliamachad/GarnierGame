@@ -32,7 +32,7 @@ body {
 }
 
 .game-container {
-  min-height: 100vh;
+  height: 100svh;
   width: min(100vw, 56.25vh);
   aspect-ratio: 9 / 16;
   background-color: #edcbcc;
@@ -55,7 +55,7 @@ body {
   flex-direction: column;
   gap: 32px;
   justify-content: space-between;
-    height: -webkit-fill-available;
+  height: -webkit-fill-available;
 }
 
 /* linhas */
