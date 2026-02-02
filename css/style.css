@@ -53,7 +53,7 @@ body {
 #bolhaPrincipal{
   width: 80%;
   left: 10%;
-  margin-top: 30vh;
+  bottom: 40svh;
   margin-bottom: auto;
   z-index: 2;
   position: relative;
@@ -127,7 +127,7 @@ body {
 
 #texto_final{
     position: absolute;
-    top: 50%;
+    bottom: 40svh;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 72%;
@@ -420,7 +420,7 @@ white-space: nowrap;
 /* ---------- SCORE: versão maior ---------- */
 .score-container{
 position: absolute !important;
-top: 86.2%;
+bottom: 15svh;
 width: 85.5%;
 margin: 0 12%;
 padding: clamp(5px, 2.5vw, 12px) clamp(18px, 4vw, 36px);
