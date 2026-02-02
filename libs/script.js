@@ -2,22 +2,6 @@
    JOGO — 2 loops + produto com delay
    (IMAGEM de fundo opcional: <img id="backgroundImage">) + APNG no clique
    ========================================================= */
-function syncBodyToImage() {
-    const img = document.getElementById('backgroundImage');
-    if (img) {
-        // Pega a altura real renderizada da imagem
-        const imgHeight = img.offsetHeight;
-        // Aplica ao body e ao container
-        document.body.style.height = imgHeight + 'px';
-        document.documentElement.style.height = imgHeight + 'px';
-    }
-}
-
-// Executa quando a imagem carregar
-document.getElementById('backgroundImage').addEventListener('load', syncBodyToImage);
-
-// Executa no redimensionamento (mudança de orientação)
-window.addEventListener('resize', syncBodyToImage);
 
 // ===============================
 // ELEMENTOS DO DOM
@@ -64,7 +48,7 @@ const BUBBLE_RADIUS_MAX       = 150;
 const BUBBLE_SPAWN_INTERVAL   = 500; // ms
 const MAX_BUBBLES             = 10;
 const BUBBLE_APPEAR_DURATION  = 1000; // ms
-const BUBBLE_LIFETIME =1500; // Tempo total que a bolha fica na tela
+const BUBBLE_LIFETIME =600; // Tempo total que a bolha fica na tela
 const FADE_OUT_DURATION = 500; 
 
 // APNG de estouro
